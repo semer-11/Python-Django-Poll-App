@@ -1,0 +1,112 @@
+{% extends 'layouts/base.html'%} {%load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}Django Poll App{%endblock%} </title>
+        {%block customcss%} {%endblock%}
+    </head>
+
+    <body>
+        {%block navbar %}
+        <nav class="navbar navbar-expand-lg  " style="background-color:#303030;">
+            <button class="navbar-toggler btn" type="input" data-toggle="collapse" data-target="#navbar">
+            <i class="fa fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar">
+                <li class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    {%if user.is_authenticated %}
+                    <i class=" my-1 mx-4 fas fa-user-circle" style="color: #fff; height:30px;"> @{{user.username.upper}}</i>
+
+                    <a href="/logout" class="mx-4">Logout</a>
+                    <a href="/polls" id="nav" class="nav-item mx-4">
+                        
+                        Polls
+            
+                </a>
+                    <a href="/mine">My Polls</a>
+                    <div class=" mr-auto float-right">
+
+
+                    </div> {%endif%}
+
+
+
+                </li>
+            </div>
+
+        </nav>
+        {%endblock%} {%block content%}
+        <div class="container">
+            <div class="row justify-content-center my-4" style="height: 100px;">
+
+                <form action="/{{qst.id}}/modify/question" method="POST">
+                    {%csrf_token%}
+                    <input type="text" name="question" value="{{qst.question}}" id="text" style="display: none;"><br>
+                    <input type="submit" value="Update" id="submit" class=" my-4 btn btn-primary" style="display: none;">
+                </form>
+                <form action="/{{qst.id}}/modify/addchoice" method="POST">
+                    {%csrf_token%}
+                    <input type="text" name="choice" placeholder="Enter Your Choice You can add as much as You want!" id="choice" style="display: none;"><br>
+                    <input type="submit" value="Add" id="submit_choice" class=" my-4 btn btn-info" style="display: none;">
+                </form>
+
+
+
+
+            </div>
+
+            <div class="row justify-content-center my-2">
+                <button id="show" class="btn btn-warning">Update</button>
+                <button id="showchoice" class="btn btn-primary mx-2">Add Choice</button>
+
+                <a href="/{{qst.id}}/modify/delete" class="btn btn-danger mx-2">Delete</a>
+            </div>
+            <div class="row my-4 justify-content center">
+
+
+                <div class="">
+                    <ul class="list-group justify-content-center">
+                        <h1>Question:<u><span>{{qst.question}}</span></u></h1>
+                        <h3 style="text-align: center;"><u>Choices</u></h3>
+                        {% for chc in chc %}
+
+                        <li class="list-group-item"><a href="/{{chc.id}}/modify/choice"><i class=" text-info fas fa-pen"></i></a>&nbsp; {{chc.choice_text}}
+                        </li>
+
+                        {%endfor%}
+
+                    </ul>
+
+
+                </div>
+
+            </div>
+        </div>
+
+        <script>
+            if (window.history.replaceState) {
+                window.history.replaceState(null, null, window.location.href);
+            }
+            $("#show").click(function() {
+                $("#text").toggle("slow");
+                $("#submit").toggle("slow");
+                $("#choice").hide();
+                $("#submit_choice").hide();
+            });
+            $("#showchoice").click(function() {
+                $("#choice").toggle("slow");
+                $("#submit_choice").toggle("slow");
+                $("#text").hide();
+                $("#submit").hide();
+            });
+        </script>
+        {% endblock%}
+
+    </body>
+
+</html>

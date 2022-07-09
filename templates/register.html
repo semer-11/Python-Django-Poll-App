@@ -1,0 +1,61 @@
+{% extends 'layouts/base.html'%} {%load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}Django Poll App{%endblock%} </title>
+        {%block customcss%} {%endblock%}
+    </head>
+
+    <body>
+        {%block content%}
+        <nav class="navbar navbar-expand-lg  " style="background-color:#303030;">
+            <button class="navbar-toggler btn" type="button" data-toggle="collapse" data-target="#navbar">
+            <i class="fa fa-bars"></i>
+        </button>
+            <div class="collapse navbar-collapse" id="navbar">
+                <li class="navbar-nav mr-auto mt-2 mt-lg-0">
+
+                    <a href="accounts/login" id="nav" class="nav-item mx-4">
+                    
+                            Login
+                        
+                    </a>
+
+                </li>
+            </div>
+
+        </nav>
+        <section>
+            <div class="container">
+                <div class="row justify-content-center">
+
+                    <form method="POST" action="/register">
+                        {% csrf_token %}
+                        <label for="FirstName" class="my-2">FirstName</label><br>
+                        <input type="text" id="FirstName" name="firstname"><br>
+                        <label for="LastName" class="my-2">LastName</label><br>
+                        <input type="text" id="LastName" name="lastname"><br>
+                        <label for="username" class="my-2">UserName</label><br>
+                        <input type="text" id="username" name="username"><br>
+                        <label for="password1" class="my-2">Password</label><br>
+                        <input type="password" id="password1" name="password1"><br>
+                        <label for="password2" class="my-2">Re-Enter Password</label><br>
+                        <input type="password" id="password2" name="password2"><br>
+                        <input class="btn btn-primary my-4" type="submit" value="Register">
+                        <br> Already have an account?<a href="/accounts/login"><span style="color: blue;font-family:'Times New Roman', Times, serif;font-weight:700;">Login</span></a>
+
+
+                    </form>
+
+                </div>
+            </div>
+        </section>
+        {% endblock%}
+    </body>
+
+</html>

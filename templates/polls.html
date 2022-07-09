@@ -1,0 +1,82 @@
+{% extends 'layouts/base.html'%} {%load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}Django Poll App{%endblock%} </title>
+        {%block customcss%} {%endblock%}
+    </head>
+
+    <body>
+        {%block navbar %}
+        <nav class="navbar navbar-expand-lg  " style="background-color:#303030;">
+            <button class="navbar-toggler btn" type="button" data-toggle="collapse" data-target="#navbar">
+            <i class="fa fa-bars"></i>
+        </button>
+            <div class="collapse navbar-collapse" id="navbar">
+                <li class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    {%if user.is_authenticated %}
+                    <i class=" my-1 mx-4 fas fa-user-circle" style="color: #fff; height:30px;"> @{{user.username.upper}}</i>
+
+                    <a href="/logout" class="mx-4">Logout</a>
+
+                    <a href="/mine" id="nav" class="nav-item mx-4">
+                        
+                        My Polls
+             
+                 </a>
+                    <a href="/addpoll" id="nav" class="nav-item mx-4">
+                        
+                    Create Poll
+         
+             </a>{%endif%}
+
+
+
+                </li>
+            </div>
+
+        </nav>
+        {%endblock%} {%block content%}
+
+        <section>
+            <div class="container">
+                <div class="row">
+
+                </div>
+                <div class="row">
+                    <div class="col-12 main-div my-4 justify-content center">
+                        <div class="col justify-content-center">
+                            <h1 class="info">Here are the list of Polls available for You to vote on them</h1>
+                        </div>
+                        {% for qst in qst %}
+                        <div class="">
+                            <h3>{{qst.question}}</h3>
+                            <div class="row">
+                                <ul>
+                                    <a class="btn btn-success my-2 mx-0 fas fa-eye" href="/{{qst.id}}">choice</a>
+                                    <a href="/{{qst.id}}/addvote" class="fas fa-eye my-2 mx-1 btn btn-info">Result</a></ul>
+                                <p class="my-3 mx-4">Created By:<span> {{qst.owner}}</span> in <span>{{qst.pub_date.date}}</span></p>
+
+                            </div>
+
+                            <div class="under">
+
+                            </div>
+                        </div>
+                        {%endfor%}
+                        <a class="btn btn-primary my-3" href="/polls/all"><i class="fas fa-eye">Show all Poll</i></a>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+        {% endblock%}
+    </body>
+
+</html>

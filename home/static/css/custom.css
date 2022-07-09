@@ -1,0 +1,107 @@
+body {
+    background-color: beige;
+}
+
+input {
+    background-color: transparent;
+    color: #000;
+    outline: none;
+    border: none;
+    border-bottom: black solid 2px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+label {
+    font-style: italic;
+    font-weight: 700;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+table {
+    min-height: 200px;
+}
+
+table td,
+tr,
+th {
+    padding: 5px;
+    border: white solid 3px;
+}
+
+tr:nth-child(even) {
+    background-color: cadetblue;
+}
+
+tr:nth-child(odd) {
+    background-color: rgb(92, 41, 233);
+}
+
+th {
+    font-style: italic;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+td {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+h1 {
+    font-style: italic;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+h3 {
+    font-style: italic;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+h4 {
+    color: #fff;
+}
+
+p {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+span {
+    font-style: italic;
+    font-weight: 800;
+    color: rgb(65, 154, 206);
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#na {
+    color: #303030;
+    margin-top: 45%;
+    font-weight: 700;
+    font-size: larger;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#na:hover {
+    color: blue;
+}
+
+a {
+    color: #fff;
+}
+
+li {
+    color: black;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.main-div {
+    background: floralwhite;
+    width: fit-content;
+    justify-content: center;
+    position: relative;
+    border-radius: 20px;
+    box-shadow: -5px -5px 8px rgba(94, 104, 121, 0.288), 4px 4px 6px rgba(94, 104, 121, 0.288);
+}
+
+.under {
+    width: 50%;
+    border-top: black solid 1px;
+}

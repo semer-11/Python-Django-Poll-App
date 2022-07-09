@@ -1,0 +1,97 @@
+{% extends 'layouts/base.html'%} {%load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}Django Poll App{%endblock%} </title>
+        {%block customcss%} {%endblock%}
+    </head>
+
+    <body>
+        {%block navbar %}
+        <nav class="navbar navbar-expand-lg  " style="background-color:#303030;">
+            <button class="navbar-toggler btn" type="button" data-toggle="collapse" data-target="#navbar">
+            <i class="fa fa-bars"></i>
+        </button>
+            <div class="collapse navbar-collapse" id="navbar">
+                <li class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    {%if user.is_authenticated %}
+                    <i class=" my-1 mx-4 fas fa-user-circle" style="color: #fff; height:30px;"> @{{user.username.upper}}</i>
+
+                    <a href="/logout" class="mx-4">Logout</a>
+                    <a href="/polls" id="nav" class="nav-item mx-4">
+                        
+                        Polls
+            
+                </a>
+                    <a href="/addpoll" id="nav" class="nav-item mx-4">
+                        
+                    Create Poll
+         
+             </a> {%endif%}
+
+
+
+                </li>
+            </div>
+
+        </nav>
+        {%endblock%} {%block content%}
+
+        <section>
+            <div class="container">
+                <div class="row">
+
+                </div>
+                <div class="row">
+                    <div class="col-12 main-div my-4 justify-content center">
+                        <div class="col justify-content-center">
+                            <h1 class="info"></h1>
+                        </div>
+
+                        <div class="">
+
+
+
+                            <div class="">
+
+                                <h3>{{ qst.question }}</h3>
+                                <hr>
+
+                            </div>
+                            {% for each in single_vote %} {{each.vote }}
+
+
+                            <progress id="{{each.id}}" min="0" max="{{total}}" value="{{each.vote}}"></progress>
+                            <label for="{{each.id}}">{{each.choice_text}} </label>
+                            <div class="under my-1">
+
+                            </div>
+                            {%endfor%}
+                            <h3 class="">Total Number of Vote: {{total}}</h3>
+                            <a href=" /polls" class=" m-4 btn btn-primary "><i class="fa fa-arrow-circle-left">Back</i></a>
+                            <a class="btn btn-warning" href="/{{qst.id}}/retract"><i class="fas fa-retweet"> Retract vote</i></a>
+
+
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <script>
+            if (window.history.replaceState) {
+                window.history.replaceState(null, null, window.location.href);
+            }
+        </script>
+        {% endblock%}
+    </body>
+
+</html>

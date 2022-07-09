@@ -1,0 +1,168 @@
+/*--------------------------------------------------------------------- File Name: style.css ---------------------------------------------------------------------*/
+
+
+/*--------------------------------------------------------------------- import Fonts ---------------------------------------------------------------------*/
+
+@import url('https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap&subset=latin-ext');
+@import url('https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
+
+/*****---------------------------------------- 1) font-family: 'Rajdhani', sans-serif;
+ 2) font-family: 'Poppins', sans-serif;
+ ----------------------------------------*****/
+
+
+/*--------------------------------------------------------------------- import Files ---------------------------------------------------------------------*/
+
+@import url(animate.min.css);
+@import url(normalize.css);
+@import url(meanmenu.css);
+@import url(owl.carousel.min.css);
+@import url(slick.css);
+@import url(jquery-ui.css);
+@import url(nice-select.css);
+
+/*--------------------------------------------------------------------- skeleton ---------------------------------------------------------------------*/
+
+.header {
+    max-width: fit-content;
+}
+
+.btn {
+    position: absolute;
+    margin-top: 20px;
+    background-color: transparent;
+    border-color: #fff;
+    border-radius: 50px;
+    color: #fff;
+}
+
+#bio {
+    font-family: 'Times New Roman', Times, serif;
+    color: white;
+    background-color: black;
+    opacity: 0.7;
+    border: 2px solid white;
+    border-radius: 10px;
+    margin: 10px;
+    border-style: groove;
+}
+
+.start {
+    position: absolute;
+    margin-top: 50%;
+    margin-left: 45%;
+    background-color: transparent;
+    color: #4B248A;
+    border-color: #4B248A;
+    border-radius: 15px;
+    font-weight: 600;
+}
+
+.body {
+    background-color: #4b284a;
+    width: 100%;
+    height: auto;
+}
+
+h1 {
+    color: #fff;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-style: italic;
+}
+
+.work {
+    color: #fff;
+    border-style: 4px solid;
+    border: black;
+    background-color: #fff;
+    margin-left: 10px;
+    margin: 1px;
+    padding: 5px;
+    border-color: black;
+    align-content: center;
+}
+
+.work:hover {
+    color: #4b284a;
+}
+
+.work {
+    color: #fff;
+    background: -o-repeating-linear-gradient(21, 23, 56);
+    font-family: sans-serif;
+}
+
+section.main {
+    color: #fff;
+    width: 100%;
+    height: auto;
+}
+
+.right {
+    margin-right: 90% !important;
+}
+
+.vl {
+    border-left: 3px solid #fff;
+    height: 50px;
+}
+
+P {
+    font: 16px/24px 'librebaskerville-italic', serif;
+}
+
+.skill {
+    height: auto;
+}
+
+.skill-container {
+    color: #fff;
+}
+
+.over-lay {
+    background: #0d0c2d;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    position: absolute;
+    padding: 20px 10px 20px 20px;
+    margin-left: auto;
+    margin-right: auto;
+    -webkit-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+}
+
+.over-lay:hover {
+    cursor: pointer;
+    opacity: 0.9;
+}
+
+.boxer {
+    display: grid;
+    grid-template-columns: repeat(1, 160px);
+    grid-gap: 80px;
+    background: #0d0c2d;
+    box-shadow: -5px -5px 8px rgba(94, 104, 121, 0.288), 4px 4px 6px rgba(94, 104, 121, 0.288);
+    padding: 60px;
+    margin: auto 5px;
+}
+
+.space {
+    height: 50px;
+}
+
+footer {
+    text-align: center;
+    background-color: white!important;
+    color: #0d0c2d;
+    font-style: italic;
+}
+
+.bar {
+    background-color: #0d0c2d !important;
+    opacity: 0.7;
+}

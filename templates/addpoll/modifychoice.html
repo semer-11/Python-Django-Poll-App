@@ -1,0 +1,77 @@
+{% extends 'layouts/base.html'%} {%load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}Django Poll App{%endblock%} </title>
+        {%block customcss%} {%endblock%}
+    </head>
+
+    <body>
+        {%block navbar %}
+        <nav class="navbar navbar-expand-lg  " style="background-color:#303030;">
+            <button class="navbar-toggler btn" type="input" data-toggle="collapse" data-target="#navbar">
+            <i class="fa fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar">
+                <li class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    {%if user.is_authenticated %}
+                    <i class=" my-1 mx-4 fas fa-user-circle" style="color: #fff; height:30px;"> {{user.username.upper}}</i>
+
+                    <a href="/logout" class="mx-4">Logout</a>
+                    <a href="/polls" id="nav" class="nav-item mx-4">
+                        
+                        Polls
+            
+                </a>
+                    <div class=" mr-auto float-right">
+
+
+                    </div> {%endif%}
+
+
+
+                </li>
+            </div>
+
+        </nav>
+        {%endblock%} {%block content%}
+        <div class="container">
+            <div class="row justify-content-center my-4">
+                <form method="POST" action="/{{chc.id}}/modify/choice">
+                    {%csrf_token%}
+                    <input type="text" name="choice" value="{{chc.choice_text}}"><br>
+                    <input type="submit" value="Update" class="btn btn-warning my-4">
+                    <a href="/{{chc.id}}/modify/deletechoice" class="btn btn-danger">Delete</a>
+                </form>
+
+            </div>
+
+            <div class="row my-4 justify-content center">
+
+
+                <div class="">
+                    <ul class="list-group justify-content-center">
+
+                    </ul>
+
+
+                </div>
+
+            </div>
+        </div>
+
+        <script>
+            if (window.history.replaceState) {
+                window.history.replaceState(null, null, window.location.href);
+            }
+        </script>
+        {% endblock%}
+
+    </body>
+
+</html>

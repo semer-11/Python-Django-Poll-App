@@ -1,0 +1,82 @@
+{% extends 'layouts/base.html'%} {%load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}Django Poll App{%endblock%} </title>
+        {%block customcss%} {%endblock%}
+    </head>
+
+    <body>
+        {%block navbar %}
+        <nav class="navbar navbar-expand-lg  " style="background-color:#303030;">
+            <button class="navbar-toggler btn" type="button" data-toggle="collapse" data-target="#navbar">
+            <i class="fa fa-bars"></i>
+        </button>
+            <div class="collapse navbar-collapse" id="navbar">
+                <li class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    {%if user.is_authenticated %}
+                    <i class=" my-1 mx-4 fas fa-user-circle" style="color: #fff; height:30px;"> @{{user.username.upper}}</i>
+
+                    <a href="/logout" class="mx-4">Logout</a>
+                    <a href="/polls" id="nav" class="nav-item mx-4">
+                        
+                        Polls
+            
+                </a>
+                    <div class=" mr-auto float-right">
+
+
+                    </div> {%endif%}
+
+
+
+                </li>
+            </div>
+
+        </nav>
+        {%endblock%} {%block content%}
+        <div class="container">
+            <div class="row">
+
+                <div class="col-12">
+
+                    <table class=" my-4 main-div">
+                        <tr>
+                            <th colspan="3">{{poll.question}}</th>
+                        </tr>
+                        <th>choice id</th>
+                        <th>choice</th>
+                        <th>vote</th>
+                        {% for chc in chc %}
+                        <tr>
+                            <td>{{chc.id}}</td>
+                            <td>{{chc.choice_text}}</td>
+                            <td>{{chc.vote}}</td>
+
+                        </tr>
+                        {%endfor%}
+                    </table>
+                    <a href="/{{poll.id}}/modify" class="btn btn-warning fas fa-pen">Modify</a>
+                    <a href="/mine" class="btn btn-primary fas fa-arrow-circle-left">Back</a>
+                </div>
+
+
+            </div>
+        </div>
+
+
+        <script>
+            if (window.history.replaceState) {
+                window.history.replaceState(null, null, window.location.href);
+            }
+        </script>
+        {% endblock%}
+
+    </body>
+
+</html>

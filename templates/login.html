@@ -1,0 +1,57 @@
+{% extends 'layouts/base.html'%} {%load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}Django Poll App{%endblock%} </title>
+        {%block customcss%} {%endblock%}
+    </head>
+
+    <body>
+        {%block navbar %}
+        <nav class="navbar navbar-expand-lg  " style="background-color:#303030;">
+            <button class="navbar-toggler btn" type="button" data-toggle="collapse" data-target="#navbar">
+            <i class="fa fa-bars"></i>
+        </button>
+            <div class="collapse navbar-collapse" id="navbar">
+                <li class="navbar-nav mr-auto mt-2 mt-lg-0">
+
+                    <a href="/register" id="nav" class="nav-item mx-4">
+                        
+                        Register
+            
+                </a>
+
+
+
+                </li>
+            </div>
+
+        </nav>
+        {%endblock%} {%block content%}
+
+        <section>
+            <div class="container">
+                <div class="row justify-content-center">
+
+                    <form method="POST" action="/accounts/login">
+                        {% csrf_token %}
+                        <label for="username" class="my-2">UserName</label><br>
+                        <input type="text" autocomplete="none" id="username" name="username"><br>
+                        <label for="password" class="my-2">Password</label><br>
+                        <input type="password" name="password"><br>
+                        <input class="btn btn-primary my-4" type="submit" value="Login"> <br> Don't have an account?<a href="/register"><span style="color: blue;font-family:'Times New Roman', Times, serif;font-weight:700;">Register</span></a>
+
+                    </form>
+
+                </div>
+            </div>
+        </section>
+        {% endblock%}
+    </body>
+
+</html>
